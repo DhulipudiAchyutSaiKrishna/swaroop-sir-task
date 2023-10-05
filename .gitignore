@@ -1,0 +1,43 @@
+# Python-specific files and directories
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment (if used)
+venv/
+.venv/
+
+# IDE and editor-specific files
+.vscode/
+.idea/
+.pycharm/
+.vs/
+.*.swp
+.DS_Store
+
+# Compiled Python files and packages
+*.pyc
+*.pyo
+__pycache__/
+
+# Temporary files
+*~
+*.bak
+*.swp
+
+# Log files
+*.log
+
+# Environment-specific files
+.env
+.env.*
+
+# Ignore the uploads directory where files are stored
+uploads/
+
+# Ignore any files or directories you want to exclude
+
+# Ignore the Python packages directory
+# You may need to adjust this path based on your project structure
+myvenv/
