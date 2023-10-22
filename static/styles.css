@@ -1,5 +1,6 @@
 /* styles.css */
 
+/* 
 .navbar {
     display: flex;
     align-items: center;
@@ -24,8 +25,64 @@ th, td {
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
-/* to style the highlighted text */
+/* to style the highlighted text 
 span.highlight {
     background-color: yellow;
     font-weight: bold;
 }
+
+*/
+
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .navbar .upload-form {
+    margin-right: 10px;
+  }
+  
+  table.data {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  span.highlight {
+    background-color: yellow;
+    font-weight: bold;
+  }
+  
+  #rowCount {
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  #columnInput {
+    margin-right: 10px;
+  }
+  
+  button {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #ddd;
+  }
