@@ -2,70 +2,38 @@
 <html>
   <head>
     <title>File Upload and Search</title>
-    <style>
-      table.data {
-        border-collapse: collapse;
-        width: 100%;
-      }
-      th,
-      td {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-      tr:nth-child(even) {
-        background-color: #f2f2f2;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
   </head>
   <body>
     <h1>File Upload and Search</h1>
 
-    <!-- Upload Form -->
-    <form method="POST" enctype="multipart/form-data" class="upload-form">
-      <input type="file" name="file" accept=".csv, .json" />
-      <input type="submit" value="Upload" />
-    </form>
+    <!-- Navbar with Upload Button and Search Input -->
+    <div class="navbar">
+      <form method="POST" enctype="multipart/form-data" class="upload-form">
+        <input type="file" name="file" accept=".csv, .json" />
+        <input type="submit" value="Upload" />
+      </form>
 
-    <!-- Search Input -->
-    <input
-      type="text"
-      id="searchInput"
-      onkeyup="filterTable()"
-      placeholder="Search for data..."
-    />
+      <input
+        type="text"
+        id="searchInput"
+        onkeyup="filterTable()"
+        placeholder="Search for data..."
+      />
+    </div>
+
+    <!-- Display Row Count -->
+    <div id="rowCount">Rows Found: 0</div>
+    <!-- Placeholder for row count -->
 
     <!-- Display Data Table -->
     {% for table in tables %} {{ table|safe }} {% endfor %}
 
     <!-- JavaScript Function for Filtering Table Rows -->
-    <script>
-      function filterTable() {
-        var input, filter, table, tr, td, i, j, txtValue;
-        input = document.getElementById("searchInput");
-        filter = input.value.toLowerCase();
-        table = document.getElementsByClassName("data")[0];
-        tr = table.getElementsByTagName("tr");
-
-        for (i = 1; i < tr.length; i++) {
-          var rowVisible = false;
-          for (j = 0; j < tr[i].cells.length; j++) {
-            td = tr[i].cells[j];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                rowVisible = true;
-                break;
-              }
-            }
-          }
-          if (rowVisible) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
-          }
-        }
-      }
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
