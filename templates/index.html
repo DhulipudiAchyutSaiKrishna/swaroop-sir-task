@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>File Upload and Search</title>
@@ -11,7 +11,7 @@
   <body>
     <h1>File Upload and Search</h1>
 
-    <!-- Navbar with Upload Button and Search Input -->
+    Navbar with Upload Button and Search Input 
     <div class="navbar">
       <form method="POST" enctype="multipart/form-data" class="upload-form">
         <input type="file" name="file" accept=".csv, .json" />
@@ -26,14 +26,52 @@
       />
     </div>
 
+     Display Row Count 
+    <div id="rowCount">Rows Found: 0</div>
+     Placeholder for row count 
+
+     Display Data Table 
+    {% for table in tables %} {{ table|safe }} {% endfor %}
+
+     JavaScript Function for Filtering Table Rows 
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload and Search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>File Upload and Search</h1>
+
+    <!-- Navbar with Upload Button, Search Input, and Remove/Restore Columns -->
+    <div class="navbar">
+        <form method="POST" enctype="multipart/form-data" class="upload-form">
+            <input type="file" name="file" accept=".csv, .json" />
+            <input type="submit" value="Upload" />
+        </form>
+
+        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Search for data..." />
+
+        <!-- Additional input for column names to remove -->
+        <input type="text" id="removeColumnsInput" placeholder="Columns to Remove (comma-separated)" />
+        <button onclick="removeColumns()">Remove Columns</button>
+        <button onclick="restoreColumns()">Restore Columns</button>
+        <!-- Download Button -->
+        <button onclick="downloadTable()">Download Table</button>
+
+    </div>
+
     <!-- Display Row Count -->
     <div id="rowCount">Rows Found: 0</div>
-    <!-- Placeholder for row count -->
 
     <!-- Display Data Table -->
     {% for table in tables %} {{ table|safe }} {% endfor %}
 
     <!-- JavaScript Function for Filtering Table Rows -->
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-  </body>
+</body>
 </html>
